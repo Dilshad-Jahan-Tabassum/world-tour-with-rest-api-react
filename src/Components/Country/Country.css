@@ -4,3 +4,13 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.visited{
+    background-color: teal;
+    color: white;
+    border-color: black;
+
+}
+.non-visited{
+    background-color: rgb(206, 166, 166);
+}
