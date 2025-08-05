@@ -8,7 +8,7 @@ const Countries = () => {
      const [visitedFlags, setVisitedFlags] = useState([]);
 
     useEffect(() => {
-        fetch('https://restcountries.com/v3.1/independent?status=true&fields=languages,capital,name,population,area,flags,cca3')
+        fetch('https://restcountries.com/v3.1/all?fields=name,capital,flags,region,population,languages,maps,cca3')
         .then(res => res.json())
         .then(data=>setCountries(data))
     },[]);
