@@ -7,7 +7,8 @@ const Countries = () => {
      const [countries, setCountries] =useState([]);
      const [visitedCountries, setVisitedCountries] =useState([]);
     //  const [visitedFlags, setVisitedFlags] = useState([]);
-     const [cart, setCart] = useState([]);
+     
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all?fields=name,capital,flags,region,population,languages,maps,cca3,cca2,area')
@@ -17,14 +18,14 @@ const Countries = () => {
 
     //load cart from local storage
     useEffect(() => {
-        console.log('loading cart from local storage',countries.length);
+        // console.log('loading cart from local storage',countries.length);
         if(countries.length){
             const storedCart = getStoredCart();
-            console.log(storedCart, countries);
+            // console.log(storedCart, countries);
 
             const savedCart = [];
             for(const cca2 of storedCart){
-                console.log(cca2);
+                // console.log(cca2);
                 const country = countries.find(country => country.cca2 === cca2);
                 if(country){
                     savedCart.push(country);
@@ -37,6 +38,11 @@ const Countries = () => {
     const handleVisitedCountry = country =>{
         const newVisitedCountry = [...visitedCountries, country];
         setVisitedCountries(newVisitedCountry);
+    }
+    const handleDelete = cca3 =>{
+        const remainingVisitedCountries = visitedCountries.filter(country =>country.cca3 !== cca3);
+        setVisitedCountries(remainingVisitedCountries);
+        // console.log('Delete button clicked');
     }
 
     // const handleVisitedFlags = flag =>{
@@ -63,9 +69,9 @@ const Countries = () => {
             <div className="cart-container">
                         {
                             visitedCountries.map(country => <div className="flag-container" key={country.cca3}>
-                                {country.name.common}
+                                <span className="country-name">{country.name.common}</span>
                                 <img  src={country.flags.png}/>
-                                <button className="btn">Delete</button>
+                                <button onClick={() => handleDelete(country.cca3)} className="btn">Delete</button>
                             </div>)
                         }  
             </div>

@@ -1,14 +1,16 @@
 .country-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap:20px;
+    gap:10px;
 }
 .cart-container{
     margin: 20px;
     padding: 10px;
 }
 .flag-container img{
-    width: 120px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
 }
 .flag-container {
     display: flex;
@@ -16,6 +18,10 @@
     align-items: center;
     padding: 5px;
 }
+.country-name {
+    font-weight: bold;
+    width: 150px;
+}
 .flag-container button{
-    background-color: rgb(151, 197, 236);
+    background-color: rgb(74, 163, 241);
 }
