@@ -3,6 +3,19 @@
     grid-template-columns: repeat(3, 1fr);
     gap:20px;
 }
+.cart-container{
+    margin: 20px;
+    padding: 10px;
+}
 .flag-container img{
-    width: 100px;
+    width: 120px;
+}
+.flag-container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    padding: 5px;
+}
+.flag-container button{
+    background-color: rgb(151, 197, 236);
 }
