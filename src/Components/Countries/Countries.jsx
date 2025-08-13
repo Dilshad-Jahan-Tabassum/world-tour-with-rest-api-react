@@ -35,14 +35,30 @@ const Countries = () => {
     },[countries]);
 
 
-    const handleVisitedCountry = country =>{
-        const newVisitedCountry = [...visitedCountries, country];
-        setVisitedCountries(newVisitedCountry);
+    // const handleVisitedCountry = country =>{
+    //     const newVisitedCountry = [...visitedCountries, country];
+    //     setVisitedCountries(newVisitedCountry);
+    // }  
+    //eta kei handleExistVisitedCountry function er moddhe handleVisitedCountry er kaj ta hye jacche
+
+    //handle visited a country and also check if the country is already visited
+    const handleExistVisitedCountry = country => {
+         const isExist = visitedCountries.find(existCountry => existCountry.cca3 === country.cca3);
+        // console.log(isExist);
+         if(!isExist){
+            setVisitedCountries([...visitedCountries,country]);
+        }
+        else{
+            alert('You have already visited this country');
+        }   
     }
+    
+
+    //delete a visited country
+    //when delete button is clicked, remove the country from visitedCountries state
     const handleDelete = cca3 =>{
-        const remainingVisitedCountries = visitedCountries.filter(country =>country.cca3 !== cca3);
+        const remainingVisitedCountries = visitedCountries.filter(country => country.cca3 != cca3);
         setVisitedCountries(remainingVisitedCountries);
-        // console.log('Delete button clicked');
     }
 
     // const handleVisitedFlags = flag =>{
@@ -80,7 +96,8 @@ const Countries = () => {
                 {
                 countries.map(country => <Country 
                     key={country.cca3} 
-                    handleVisitedCountry = {handleVisitedCountry}
+                    // handleVisitedCountry = {handleVisitedCountry}
+                    handleExistVisitedCountry={handleExistVisitedCountry}
                     // handleVisitedFlags={handleVisitedFlags}
                     handleAddToCart={handleAddToCart}
                     country={country}></Country>)
