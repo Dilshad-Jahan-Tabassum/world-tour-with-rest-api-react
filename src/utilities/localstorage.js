@@ -22,7 +22,7 @@ const addToLocalStorage = cca2 => {
 const deleteFromLocalStorage = cca2 => {
     const cart = getStoredCart();
     //removing the item with the given cca2 from the cart
-    const remainingCart = cart.filter(item=>item.cca2 !== cca2);
+    const remainingCart = cart.filter(item=> item !== cca2);
     // Save the updated cart to localStorage
     saveToLocalStorage(remainingCart);
 }
